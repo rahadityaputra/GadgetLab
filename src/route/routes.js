@@ -1,9 +1,10 @@
 import express from 'express';
+import { autentikasiLogin, renderLoginPage, renderHomePage, renderSignupPage } from '../controller/userController.js';
 
-const route = express.Router();
-
-route.get('/', (req,res) => {
-    
-})
+export const route = express.Router();
+route.get('/login', renderLoginPage);
+route.get('/signup', renderSignupPage);
+route.post('/login', autentikasiLogin);
+route.use('/', renderHomePage);
 
 
