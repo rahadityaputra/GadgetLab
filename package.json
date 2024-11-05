@@ -1,0 +1,15 @@
+{
+  "name": "gadgetlab",
+  "version": "1.0.0",
+  "description": "Web Review Gadget Phone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rahaditya Abimanyu , Gusti Rama",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "type": "module"
+}
