@@ -9,7 +9,12 @@
   "author": "Rahaditya Abimanyu , Gusti Rama",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  }
 }

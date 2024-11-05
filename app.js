@@ -1,8 +1,13 @@
 import express from 'express';
+
 const app = express();
 
-app.use((req, res) => {
-    res.send('halo adit');
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
+app.use("/",(req, res) => {
+    // res.send('halo adit');
+    res.render('login');
 })
 
 app.listen(3000, ()=> {
