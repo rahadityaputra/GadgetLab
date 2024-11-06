@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "nodemon --env-file=.env app.js"
+    "start": "nodemon --env-file=.env app.js"
   },
   "author": "Rahaditya Abimanyu , Gusti Rama",
   "license": "ISC",
