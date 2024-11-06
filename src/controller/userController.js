@@ -26,6 +26,18 @@ export const renderHomePage = (req, res) => {
   res.render("home");
 };
 
+export const renderPhonesPage = (req, res) => {
+  res.render("phones");
+};
+
+export const renderComparePage = (req, res) => {
+  res.render("compare");
+};
+
+export const renderReviewPage = (req, res) => {
+  res.render("review");
+};
+
 export const renderSignupPage = (req, res) => {
   res.render("signup");
 };
