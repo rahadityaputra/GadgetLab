@@ -8,13 +8,14 @@ const connection = await mysql.createConnection({
 });
 
 
-export const query = async (sqlQuery) => {
+export const query = async (sqlQuery, values = []) => {
     try {
-        const [results, fields] = await connection.query(sqlQuery);
+        const [results, fields] = await connection.execute(sqlQuery, values);
+        console.log(results, fields);
         return results;
 
     } catch (error) {
-        return error;
+        throw  error;
     }
 };
 
