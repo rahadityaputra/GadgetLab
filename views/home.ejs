@@ -135,7 +135,10 @@
     <ul>
       <% phones.forEach(phone => { %>
 
-      <li><%= phone.img %></li>
+      <li>
+        <h5><%= phone.name %></h5>
+        <img src="<%= phone.img %>" alt="">
+      </li>
 
       <%})%>
     </ul>
