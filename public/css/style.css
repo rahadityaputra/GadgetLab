@@ -1,0 +1,17 @@
+/* Make the cards clickable */
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  /* Add hover effect for clickable cards */
+  .clickable-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Ensure images are responsive within the card */
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  
