@@ -75,6 +75,6 @@ export const createAccount = (req, res) => {
 };
 
 
-const renderHomeLogin = (req, res) => {
+export const renderHomeLogin = (req, res) => {
   res.render('homelogin');
 }
