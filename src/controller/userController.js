@@ -26,12 +26,12 @@ export const autentikasiLogin = async (req, res) => {
 export const renderHomePage = async (req, res) => {
   try {
     const topPhones = await gsmarena.top.get();
+    console.log(topPhones[0]);
+
     res.render('home', {data :topPhones[0]});
   } catch (error) {
     console.log(error);
   }
-
-  res.render("home");
 };
 
 export const renderSignupPage = (req, res) => {
@@ -77,4 +77,8 @@ export const createAccount = (req, res) => {
 
 export const renderHomeLogin = (req, res) => {
   res.render('homelogin');
+}
+
+export const renderComparePage = (req, res) => {
+  res.render('compare');
 }
