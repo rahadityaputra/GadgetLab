@@ -1,6 +1,7 @@
 import validator from "validator";
 import { query } from "../configuration/database.js";
-import { top } from "../services/services.js";
+import gsmarena from 'gsmarena-api';
+
 
 export const renderLoginPage = (req, res) => {
   res.render("login");
@@ -22,7 +23,14 @@ export const autentikasiLogin = async (req, res) => {
   }
 };
 
-export const renderHomePage = (req, res) => {
+export const renderHomePage = async (req, res) => {
+  try {
+    const topPhones = await gsmarena.top.get();
+    res.render('home', {data :topPhones[0]});
+  } catch (error) {
+    console.log(error);
+  }
+
   res.render("home");
 };
 
@@ -65,3 +73,8 @@ export const createAccount = (req, res) => {
     res.redirect("/signup");
   }
 };
+
+
+const renderHomeLogin = (req, res) => {
+  res.render('homelogin');
+}
