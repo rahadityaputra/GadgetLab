@@ -23,12 +23,28 @@ export const autentikasiLogin = async (req, res) => {
   }
 };
 
+
+const getDeviceList = async () => {
+  const results = await gsmarena.top.get();
+  const topPhones = results[0]["list"];
+  const devicesList = await Promise.all(
+    topPhones.map(async ({name}) => {
+     const devices = await gsmarena.catalog.getBrand(name);
+     return devices.img;
+   })
+  )
+
+  return devicesList;
+}
+
+
+
 export const renderHomePage = async (req, res) => {
   try {
-    const topPhones = await gsmarena.top.get();
-    console.log(topPhones[0]);
-
-    res.render('home', {data :topPhones[0]});
+    const topPhonesv2 = await getDeviceList();
+    console.log(topPhonesv2);
+    res.render('home', {phones : ["halo"]});
+    // res.render('home', {phones : topPhonesv2});
   } catch (error) {
     console.log(error);
   }
@@ -81,4 +97,11 @@ export const renderHomeLogin = (req, res) => {
 
 export const renderComparePage = (req, res) => {
   res.render('compare');
+}
+
+export const renderPhonesPage = (req, res) => {
+  res.render('phones');
+}
+export const renderReviewPage = (req, res) => {
+  res.render('review');
 }
