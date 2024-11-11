@@ -2,9 +2,9 @@ import express from 'express';
 import {route} from './src/route/routes.js';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv/config';
+import { test } from './src/configuration/databasev2.js';
 
-
-
+test();
 
 const app = express();
 app.use(bodyParser.urlencoded({
