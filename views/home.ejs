@@ -77,12 +77,11 @@
           <!-- Carousel Items -->
           <div class="carousel-inner">
             <% phones.forEach((phone, index) => { %>
-              <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style="height: 400px;"> <!-- Set fixed height for the item -->
-                <a href="/phone/<%= phone.name %>" class="card text-center w-100" style="max-width: 300px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+              <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style="height: 400px; width: 500px;"> <!-- Set fixed height for the item -->
+                <a href="/phone/<%= phone.name %>" class="card text-center w-100" style="max-width: 500px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                   <img src="<%= phone.img %>" class="card-img-top img-fluid" alt="<%= phone.name %>" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
                   <div class="card-body" style="flex-grow: 1;">
                     <h5 class="card-title"><%= phone.name %></h5>
-                    <p class="card-text"><%= phone.price %></p>
                   </div>
                 </a>
               </div>
@@ -90,7 +89,7 @@
           </div>
         
           <!-- Carousel Indicators (Explicit margin/padding) -->
-          <div class="carousel-indicators">
+          <div class="carousel-indicators" >
             <% phones.forEach((phone, index) => { %>
               <button
                 type="button"
