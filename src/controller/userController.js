@@ -72,16 +72,29 @@ const getDeviceList = async () => {
 
   try {
     const results = await gsmarena.top.get();
-    const topPhones = results[0]["list"];
-    const devicesList = await Promise.all(
-      topPhones.map(async ({ id }) => {
+    const topPhonesByInterest = results[0]["list"];
+    const topPhonesByFans = results[1]["list"];
+    // console.log(results);
+    const topPhonesByFansList = await Promise.all(
+      topPhonesByFans.map(async ({ id }) => {
         const device = await gsmarena.catalog.getDevice(id);
         return device;
-      })
-    );
+      }));
 
-    await saveCache(devicesList);
-    return devicesList;
+    const topPhonesByInterestList = await Promise.all(
+      topPhonesByInterest.map(async ({ id }) => {
+        const device = await gsmarena.catalog.getDevice(id);
+        return device;
+      }))
+
+      await saveCache({topPhonesByFansList, topPhonesByInterestList});
+
+      return {
+        topPhonesByFansList,
+        topPhonesByInterestList
+      }
+
+
   } catch (error) {
     console.log("nih errornya", error);
     throw error;
@@ -90,8 +103,8 @@ const getDeviceList = async () => {
 
 export const renderHomePage = async (req, res) => {
   try {
-    const topPhonesv2 = await getDeviceList();
-    res.render("home", { phones: topPhonesv2 });
+    const {topPhonesByFansList, topPhonesByInterestList} = await getDeviceList();
+    res.render("home", { topPhonesByFansList, topPhonesByInterestList });
   } catch (error) {
     console.log(error);
   }
