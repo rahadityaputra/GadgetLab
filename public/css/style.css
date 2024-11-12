@@ -1,4 +1,9 @@
 /* Make the cards clickable */
+
+body {
+  background-color: #151517;
+}
+
 .clickable-card {
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -13,5 +18,10 @@
   .card-img-top {
     width: 100%;
     height: auto;
+  }
+  
+  .active-page {
+    border-bottom: 2px solid #f8f9fa; /* white underline */
+    padding-bottom: 5px; /* space between underline and text */
   }
   
