@@ -48,7 +48,7 @@ export const login = async (req, res) => {
   try {
     const result = await authenticationLogin(email, password);
     if (result.success) {
-      res.redirect('/home');
+      res.redirect('/');
     } else {
       res.redirect('/login');
 
@@ -120,12 +120,11 @@ export const createAccount = async (req, res) => {
   try {
     const result = await authenticationSignUp(username, email, password, passwordConfirmation);
     if (result.success) {
-      res.render('home');
+      res.redirect('/');
     } else {
-      res.render('signup');
+      res.redirect('/signup');
     }
   } catch (error) {
-
     // tampilkan error
     console.log(error);
 
