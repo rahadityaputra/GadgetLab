@@ -1,0 +1,110 @@
+ <!-- untuk top 10 daily interest -->
+ <div class="row mt-5">
+    <div class="col-md-12">
+      <h3 class="text-center mb-3">Top 10 by daily interest</h3>
+      <div id="phoneCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
+  
+        <div class="carousel-inner">
+          <% topPhonesByInterestList.forEach((phone, index) => { %>
+            <% if (index % 3 === 0) { %>
+              <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style="height: 400px; width: 100%;">
+                <div class="row g-4" style="display: flex; justify-content: center;">
+            <% } %>
+            
+            <div class="col-12 col-md-4">
+              <a href="/phone/<%= phone.name %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
+                <img src="<%= phone.img %>" class="card-img-top img-fluid pt-5" alt="<%= phone.name %>" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
+                <div class="card-body" style="flex-grow: 1;">
+                  <h5 class="card-title"><%= phone.name %></h5>
+                </div>
+              </a>
+            </div>
+  
+            <% if ((index + 1) % 3 === 0 || index === topPhonesByInterestList.length - 1) { %>
+                </div>
+              </div>
+            <% } %>
+          <% }) %>
+        </div>
+        <div class="carousel-indicators">
+          <% const totalSlides = Math.ceil(topPhonesByInterestList.length / 3); %>
+          <% for (let i = 0; i < totalSlides; i++) { %>
+            <button
+              type="button"
+              data-bs-target="#phoneCarousel"
+              data-bs-slide-to="<%= i %>"
+              class="<%= i === 0 ? 'active' : '' %>"
+              aria-current="<%= i === 0 ? 'true' : 'false' %>"
+              aria-label="Slide <%= i + 1 %>"
+              style="width: 5px; height: 5px; border-radius: 50%; margin: 0 2px;">
+            </button>
+          <% } %>
+        </div>
+  
+        <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarousel" data-bs-slide="prev" style="left: -100px; z-index: 10;">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#phoneCarousel" data-bs-slide="next" style="right: -100px; z-index: 10;">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>            
+</div>
+
+<!-- untuk top 10 By Fans -->
+<div class="row mt-5">
+  <div class="col-md-12">
+    <h3 class="text-center mb-3">Top 10 by Fans</h3>
+    <div id="phoneCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
+
+      <div class="carousel-inner">
+        <% topPhonesByFansList.forEach((phone, index) => { %>
+          <% if (index % 3 === 0) { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style="height: 400px; width: 100%;">
+              <div class="row g-4" style="display: flex; justify-content: center;">
+          <% } %>
+          
+          <div class="col-12 col-md-4">
+            <a href="/phone/<%= phone.name %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
+              <img src="<%= phone.img %>" class="card-img-top img-fluid pt-5" alt="<%= phone.name %>" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
+              <div class="card-body" style="flex-grow: 1;">
+                <h5 class="card-title"><%= phone.name %></h5>
+              </div>
+            </a>
+          </div>
+
+          <% if ((index + 1) % 3 === 0 || index === topPhonesByFansList.length - 1) { %>
+              </div>
+            </div>
+          <% } %>
+        <% }) %>
+      </div>
+      <div class="carousel-indicators">
+        <% const totalSlides2 = Math.ceil(topPhonesByFansList.length / 3); %>
+        <% for (let i = 0; i < totalSlides2; i++) { %>
+          <button
+            type="button"
+            data-bs-target="#phoneCarousel"
+            data-bs-slide-to="<%= i %>"
+            class="<%= i === 0 ? 'active' : '' %>"
+            aria-current="<%= i === 0 ? 'true' : 'false' %>"
+            aria-label="Slide <%= i + 1 %>"
+            style="width: 5px; height: 5px; border-radius: 50%; margin: 0 2px;">
+          </button>
+        <% } %>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarousel" data-bs-slide="prev" style="left: -100px; z-index: 10;">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#phoneCarousel" data-bs-slide="next" style="right: -100px; z-index: 10;">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>         
