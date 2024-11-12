@@ -1,7 +1,15 @@
-import { accountValidator } from "./userController";
+import { accountValidator } from "../utils/userValidation.js";
 
-// const accountValidator = require("./userController");
+async function halo() {
+    try {
+        return await accountValidator.validateAsync({username : 'rahadityaputra', email: 'rahaditya@gmail.com', password : 'rumah1234', passwordConfirmation: 'rumah1234'}).then(e => e);
+    
+    } catch (error) {
+        throw error;
+    }
+
+}
 
 test('adds 1 + 2 to equal 3', () => {
-    expect(accountValidator('rahadit@gmail.com', 'Rumah12345', 'Rumah12345')).toBe(true);
+    expect(halo()).toBe({});
   });

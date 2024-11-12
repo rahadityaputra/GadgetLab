@@ -4,7 +4,8 @@ import gsmarena from "gsmarena-api";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { User } from "../model/userModel.js";
+import { authenticationLogin, authenticationSignUp} from "../utils/userValidation.js";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,24 +41,26 @@ export const renderLoginPage = (req, res) => {
   res.render("login");
 };
 
-export const autentikasiLogin = async (req, res) => {
-  console.log(req.body);
+
+export const login = async (req, res) => {
   const { email, password } = req.body;
 
-  
-  // const result = await query(
-  //   `SELECT * FROM user WHERE email = '${email}' AND password = '${password}'`
-  // );
-  // res.send();
-  // menggunakan sequelize
+  try {
+    const result = await authenticationLogin(email, password);
+    if (result.success) {
+      res.redirect('/home');
+    } else {
+      res.redirect('/login');
 
-  if (result.length == 1) {
-    res.redirect("/home");
-  } else {
-    console.log("gagal login");
-    res.redirect("/login");
+    }
+  } catch (error) {
+    
   }
+  
 };
+
+
+
 
 const getDeviceList = async () => {
   let devices = await loadCache();
@@ -88,11 +91,7 @@ const getDeviceList = async () => {
 export const renderHomePage = async (req, res) => {
   try {
     const topPhonesv2 = await getDeviceList();
-    // const detail = await gsmarena.catalog.getDevice(topPhonesv2);
-    console.log(topPhonesv2);
-
     res.render("home", { phones: topPhonesv2 });
-    // res.render('home', {phones : topPhonesv2});
   } catch (error) {
     console.log(error);
   }
@@ -102,55 +101,23 @@ export const renderSignupPage = (req, res) => {
   res.render("signup");
 };
 
-export const accountValidator = (email, password, passwordConfirmation) => {
-  if (!validator.isEmail(email)) {
-    return false;
-  }
-
-  if (password !== passwordConfirmation) {
-    return false
-  }
-
-  // if (
-  //   validator.isStrongPassword(password, {
-  //     minLength: 8,
-  //     minLowercase: 1,
-  //     minUppercase: 1,
-  //     minNumbers: 1,
-  //   })
-  // ) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-
-  return true;
-};
 
 export const createAccount = async (req, res) => {
-  const { email, password, passwordConfirmation } = req.body;
-  if (accountValidator(email, password, passwordConfirmation)) {
-    try {
-        await User.create({ email, password });
-        res.redirect("/home");
-      } catch (error) {
-        res.redirect("/signup");
-      }
-  } else {
-      res.redirect("/signup");
+  const { username, email, password, passwordConfirmation } = req.body;
+  try {
+    const result = await authenticationSignUp(username, email, password, passwordConfirmation);
+    if (result.success) {
+      res.render('home');
+    } else {
+      res.render('signup');
+    }
+  } catch (error) {
+
+    // tampilkan error
+    console.log(error);
 
   }
-  // const sqlQuery =
-  //   "INSERT INTO `user` (`id_user`, `email`, `password`) VALUES (NULL, ?,?)";
 
-
-  // try {
-  //   const result = query(sqlQuery, [email, password]);
-  //   res.redirect("/home");
-  // } catch (error) {
-    //   console.log(error);
-    //   res.redirect("/signup");
-  // }
 };
 
 export const renderHomeLogin = (req, res) => {

@@ -1,13 +1,12 @@
 import express from 'express';
-import { renderReviewPage, renderPhonesPage, renderComparePage,renderHomeLogin, autentikasiLogin, renderLoginPage, renderHomePage, renderSignupPage, createAccount } from '../controller/userController.js';
-import { getTopPhone } from '../controller/phoneController.js';
+import { renderReviewPage, renderPhonesPage, renderComparePage,renderHomeLogin, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount } from '../controller/userController.js';
 
 export const route = express.Router();
 // route.get('/', getTopPhone);
 route.get('/login', renderLoginPage);
 route.get('/signup', renderSignupPage);
 route.post('/signup', createAccount);
-route.post('/login', autentikasiLogin);
+route.post('/login', login);
 route.get('/homelogin', renderHomeLogin)
 route.get('/compare', renderComparePage);
 route.get('/phones', renderPhonesPage);
