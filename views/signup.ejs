@@ -6,62 +6,80 @@
   <title>GadgetLab</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body class="d-flex flex-column min-vh-100">
-  <nav class="navbar navbar-expand-lg px-5 bg-dark">
+<body class="d-flex flex-column min-vh-100 text-light">
+  <nav class="navbar navbar-expand-lg bg-transparent border text-light shadow-lg rounded-5 mx-5 my-3">
     <div class="container-fluid">
-      <a class="navbar-brand text-warning fs-2 fw-medium" href="home">GadgetLab</a>
+      <a class="navbar-brand text-light fs-4 fw-medium" href="/">GadgetLab</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-warning fs-4 mx-3 fw-medium" href="#">Phones</a>
+            <a class="nav-link text-light fs-6 mx-3 fw-medium" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-warning fs-4 mx-3 fw-medium" href="#">Compare</a>
+            <a class="nav-link text-light fs-6 mx-3 fw-medium" href="phones">Phones</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-warning fs-4 mx-3 fw-medium" href="#">Review</a>
+            <a class="nav-link text-light fs-6 mx-3 fw-medium" href="compare">Compare</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light fs-6 mx-3 fw-medium" href="review">Review</a>
           </li>
         </ul>
         <form class="d-flex mx-auto align-items-center w-75 form-search" role="search">
-          <input class="form-control ms-3" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-success ms-1 me-5" type="submit"><i class="bi bi-search"></i></button>
+          <input class="form-control ms-3 rounded-4" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-light ms-1 me-5 rounded-5" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
         </form>
-        <a class="btn btn-warning" href="Login">Login</a>
+        <a class="btn btn-light rounded-pill" href="Login">Login</a>
       </div>
     </div>
   </nav>
 
-  <div class="container d-flex justify-content-center align-items-center flex-grow-1 my-5 rounded shadow w-50">
-    <div class="text-center w-50">
-      <h1 class="mb-4">Sign Up</h1>
+  <div class="container d-flex justify-content-center align-items-center flex-grow-1 my-5 rounded-5 shadow w-50 border">
+    <div class="w-50">
+      <h1 class="mb-4 text-center">Sign Up</h1>
       <form action="signup" method="post">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" id="email" name="email" class="form-control" aria-describedby="emailHelp" required>
+        <div class="mb-3 position-relative">
+          <input type="text" class="form-control rounded-5 pe-5" id="username" name="username" placeholder="Username" required>
+          <i class="bi bi-person position-absolute top-50 end-0 translate-middle-y pe-3" style="font-size: 18px; color: #343a40;"></i>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
+        <div class="mb-3 position-relative">
+          <input type="email" class="form-control rounded-5 pe-5" id="email" name="email" placeholder="Email Address" required>
+          <i class="bi bi-envelope position-absolute top-50 end-0 translate-middle-y pe-3" style="font-size: 18px; color: #343a40;"></i>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password Confirmation</label>
-          <input type="password" class="form-control" id="password-confirmation" name="passwordConfirmation" required>
+        <div class="mb-3 position-relative">
+          <input type="password" class="form-control rounded-5 pe-5" id="password" name="password" placeholder="Password" required>
+          <i class="bi bi-lock position-absolute top-50 end-0 translate-middle-y pe-3" style="font-size: 18px; color: #343a40;"></i>
         </div>
-        <input type="submit" class="btn btn-primary" value="Sign Up"></input>
+        <div class="mb-3 position-relative">
+          <input type="password" class="form-control rounded-5 pe-5" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirm Password" required>
+          <i class="bi bi-lock position-absolute top-50 end-0 translate-middle-y pe-3" style="font-size: 18px; color: #343a40;"></i>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="showPassword">
+          <label class="form-check-label mb-2" for="showPassword">Show Password</label>
+        </div>
+        <input type="submit" class="btn btn-light w-100 rounded-pill" value="Register"></input>
       </form>
+      <br>
     </div>
   </div>
     
-  <footer class="bg-dark text-light text-center py-2 mt-auto">
+  <footer class="bg-invisible text-light text-center py-2 mt-auto border-top border-2">
     <div class="container">
       <p class="mb-0 small">Made By:</p>
       <p class="mb-0 small">Rahaditya Abimanyu Putra</p>
       <p class="mb-0 small">Gusti Rama</p>
-      <p class="mt-3 mb-0 small">&copy; 2024 GadgetLab. All rights reserved.</p>
+      <p class="mb-0 small">&copy; 2024 GadgetLab. All rights reserved.</p>
     </div>
   </footer>
 
