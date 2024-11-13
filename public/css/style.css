@@ -1,27 +1,44 @@
-/* Make the cards clickable */
-
 body {
+  overflow-x: hidden;
   background-color: #151517;
   font-family: "Montserrat", sans-serif;
 }
 
 .clickable-card {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  /* Add hover effect for clickable cards */
-  .clickable-card:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Ensure images are responsive within the card */
-  .card-img-top {
-    width: 100%;
-    height: auto;
-  }
-  
-  .active-page {
-    border-bottom: 2px solid #f8f9fa; /* white underline */
-    padding-bottom: 5px; /* space between underline and text */
-  }
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.clickable-card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.active-page {
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 5px;
+}
+
+#3dphone {
+  max-width: 100%; /* Keeps within column boundaries */
+  max-height: 100%; /* Enforce aspect ratio height */
+  overflow: hidden; /* Prevents overflow outside container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1; /* Maintain a square aspect ratio */
+}
+
+.carousel-item {
+  width: 24rem;
+  height: auto;
+}
+
+.card {
+  width: 24rem;
+  height: auto;
+}

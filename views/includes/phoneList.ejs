@@ -2,7 +2,7 @@
  <div class="row mt-5">
     <div class="col-md-12">
       <h3 class="text-center mb-3">Top 10 by daily interest</h3>
-      <div id="phoneCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
+      <div id="phoneCarouselInterest" class="carousel slide" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
   
         <div class="carousel-inner">
           <% topPhonesByInterestList.forEach((phone, index) => { %>
@@ -31,7 +31,7 @@
           <% for (let i = 0; i < totalSlides; i++) { %>
             <button
               type="button"
-              data-bs-target="#phoneCarousel"
+              data-bs-target="#phoneCarouselInterest"
               data-bs-slide-to="<%= i %>"
               class="<%= i === 0 ? 'active' : '' %>"
               aria-current="<%= i === 0 ? 'true' : 'false' %>"
@@ -41,11 +41,11 @@
           <% } %>
         </div>
   
-        <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarousel" data-bs-slide="prev" style="left: -100px; z-index: 10;">
+        <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarouselInterest" data-bs-slide="prev" style="left: -100px; z-index: 10;">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#phoneCarousel" data-bs-slide="next" style="right: -100px; z-index: 10;">
+        <button class="carousel-control-next" type="button" data-bs-target="#phoneCarouselInterest" data-bs-slide="next" style="right: -100px; z-index: 10;">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -58,12 +58,16 @@
 <div class="row mt-5">
   <div class="col-md-12">
     <h3 class="text-center mb-3">Top 10 by Fans</h3>
+<<<<<<< HEAD
     <div id="phoneCarousel2" class="carousel slide mb-5" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
+=======
+    <div id="phoneCarouselFans" class="carousel slide mb-5" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative; max-height: 400px;">
+>>>>>>> 8f49ddc644034b116222d2962620200772aeb49c
 
       <div class="carousel-inner">
         <% topPhonesByFansList.forEach((phone, index) => { %>
           <% if (index % 3 === 0) { %>
-            <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style="height: 400px; width: 100%;">
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style="height: 400px; max-height: 400px; width: 100%;">
               <div class="row g-4" style="display: flex; justify-content: center;">
           <% } %>
           
@@ -87,7 +91,11 @@
         <% for (let i = 0; i < totalSlides2; i++) { %>
           <button
             type="button"
+<<<<<<< HEAD
             data-bs-target="#phoneCarousel2"
+=======
+            data-bs-target="#phoneCarouselFans"
+>>>>>>> 8f49ddc644034b116222d2962620200772aeb49c
             data-bs-slide-to="<%= i %>"
             class="<%= i === 0 ? 'active' : '' %>"
             aria-current="<%= i === 0 ? 'true' : 'false' %>"
@@ -97,11 +105,19 @@
         <% } %>
       </div>
 
+<<<<<<< HEAD
       <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarousel2" data-bs-slide="prev" style="left: -100px; z-index: 10;">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#phoneCarousel2" data-bs-slide="next" style="right: -100px; z-index: 10;">
+=======
+      <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarouselFans" data-bs-slide="prev" style="left: -100px; z-index: 10;">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#phoneCarouselFans" data-bs-slide="next" style="right: -100px; z-index: 10;">
+>>>>>>> 8f49ddc644034b116222d2962620200772aeb49c
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>

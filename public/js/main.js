@@ -1,18 +1,28 @@
+const maxWidth = 500; // Desired max width in pixels
+
+// Set up Scene, Camera, Renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000); // Aspect ratio set to 1 for initial setup
+const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-// Set max width and calculate height based on aspect ratio
-const maxWidth = 500; // Desired max width in pixels
-const aspectRatio = camera.aspect; // Original aspect ratio (default to 1 for initialization)
-renderer.setSize(maxWidth, maxWidth / aspectRatio); // Set width in pixels, height calculated to maintain aspect ratio
+// Attach renderer to #3dphone container and set dynamic size
 const container = document.getElementById('3dphone');
-container.style.width = `${maxWidth}px`; // Apply max width to container for responsiveness
+container.style.width = `${maxWidth}px`; // Set the container max width
+container.style.height = `${maxWidth}px`; // Ensures initial square aspect
 container.appendChild(renderer.domElement);
 
-renderer.setClearColor(0x000000, 0);
+function resizeRenderer() {
+  const width = container.clientWidth;
+  const height = width / camera.aspect;
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+}
 
-// Load the 3D model
+// Initial render size
+resizeRenderer();
+
+// Load and position the 3D model
 const loader = new THREE.GLTFLoader();
 loader.load(
   '/3d/scene.gltf',
@@ -37,26 +47,15 @@ loader.load(
   }
 );
 
-// Lighting
+// Brighter Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 10);
 scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
-directionalLight.position.set(5, 10, 7.5);
+directionalLight.position.set(1, 1, 1);
 scene.add(directionalLight);
 
-// Set initial camera position for better framing of the model
+// Camera position
 camera.position.set(0, 1, 12);
 
-window.addEventListener('resize', () => {
-  const width = Math.min(maxWidth, window.innerWidth);
-  const height = width / aspectRatio;
-  renderer.setSize(width, height);
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-});
-
-// CSS for the container
-container.style.position = "relative";
-container.style.overflow = "hidden";
-container.style.objectFit = "contain";
-container.style.maxWidth = `${maxWidth}px`; // Prevents exceeding max width on large screens
+// Responsive resizing
+window.addEventListener('resize', resizeRenderer);
