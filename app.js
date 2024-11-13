@@ -12,16 +12,37 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended : true
 }))
+
 app.use(session({
-    name : 'session',
     secret : 'rahadityaabimanyuputra',
-    
+    resave : false,
+    saveUninitialized : false,
+    cookie : {
+        // secure : true,
+        maxAge : 600000
+    }
 }))
+
+
 app.use(express.static('public'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(flash());
+app.use((req, res, next) => {
+    console.log('test woy');
+    if(req.session.user) {
+        console.log('wis login bro');
+        console.log(req.session.user);
+        next()
+    } else {
+        next();
+    }
+
+ })
 app.use(route);
+
+
+ 
 
 app.listen(process.env.PORT, ()=> {
     console.log(`server is running on port ${process.env.PORT}`);

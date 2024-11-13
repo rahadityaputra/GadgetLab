@@ -26,7 +26,12 @@
             <i class="bi bi-search"></i>
           </button>
         </form>
-        <a class="btn btn-light rounded-pill" href="login">Login</a>
+        <% if (user) { %>
+          <p>sudah login ya</p>
+        <%} else {%>
+          <a class="btn btn-light rounded-pill" href="login">Log In</a>
+          <a class="btn btn-light rounded-pill" href="login">Sign Up</a>
+        <% } %>
       </div>
     </div>
   </nav>

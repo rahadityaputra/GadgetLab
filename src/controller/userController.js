@@ -15,6 +15,8 @@ export const login = async (req, res) => {
   try {
     const result = await authenticationLogin(email, password);
     if (result.success) {
+      const {id, username} = result.user;
+      req.session.user = {id, username};
       res.redirect('/');
     } else {
       req.flash('error', result.message);
@@ -31,7 +33,10 @@ export const createAccount = async (req, res) => {
   try {
     const result = await authenticationSignUp(username, email, password, passwordConfirmation);
     if (result.success) {
+      const {id, username} = result.user;
+      req.session.user = {id, username};
       res.redirect('/');
+
     } else {
       
       req.flash('error', result.message);
@@ -49,7 +54,8 @@ export const renderHomePage = async (req, res) => {
   try {
     const {topPhonesByFansList, topPhonesByInterestList} = await getDeviceList();
     // console.log(topPhonesByInterestList);
-    res.render("home", { topPhonesByFansList, topPhonesByInterestList });
+    console.log(req.session.user);
+    res.render("home", { topPhonesByFansList, topPhonesByInterestList , user : req.session.user});
   } catch (error) {
     console.log(error);
   }
