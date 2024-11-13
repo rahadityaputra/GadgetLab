@@ -8,12 +8,181 @@
 
     <div class="container my-5">
         <div class="row">
-          <div class="col-md-4">
-            <h2 class="fw-semibold"><%= phone.name %></h2> <!-- Phone name -->
-            <img src="<%= phone.img %>" class="img-fluid rounded-4 mb-1" alt="Phone Image"> <!-- Phone image -->
-            <p><strong>Price:</strong> $999.99</p> <!-- Phone price? -->
-            <p><strong>Specifications:</strong> CPU, RAM, dll</p>
-            <p class="text-light">Deskripsi singkat HPnya mungkin</p>
+          <div class="col-md-6">
+            <h2 class="fw-semibold text-center"><%= phone.name %></h2>
+            <div class="d-flex justify-content-center">
+              <img src="<%= phone.img %>" class="img-fluid rounded-4 mb-1" alt="Phone Image">
+            </div>            
+            <p><strong>Price:</strong> $999.99</p> <!-- harganya kalo ada dari API -->
+            <strong>Specifications:</strong> <!-- spec dummy dulu-->
+            <table class="table table-bordered table-hover">
+              <tr>
+                <th>NETWORK</th>
+                <td>Technology</td>
+                <td>5G</td>
+              </tr>
+              <tr>
+                <th rowspan="2">LAUNCH</th>
+                <td>Announced</td>
+                <td>20 September 2024</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>Available, Released 30 October 2024</td>
+              </tr>
+              <tr>
+                <th rowspan="4">BODY</th>
+                <td>Dimensions</td>
+                <td>100 x 100</td>
+              </tr>
+              <tr>
+                <td>Weight</td>
+                <td>200 g</td>
+              </tr>
+              <tr>
+                <td>Build</td>
+                <td>Gorilla Glass</td>
+              </tr>
+              <tr>
+                <td>SIM</td>
+                <td>Single SIM</td>
+              </tr>
+              <tr>
+                <th rowspan="4">PLATFORM</th>
+                <td>OS</td>
+                <td>Android 14</td>
+              </tr>
+              <tr>
+                <td>Chipset</td>
+                <td>Exynos</td>
+              </tr>
+              <tr>
+                <td>CPU</td>
+                <td>10 Core</td>
+              </tr>
+              <tr>
+                <td>GPU</td>
+                <td>RTX 4090</td>
+              </tr>
+              <tr>
+                <th rowspan="2">MEMORY</th>
+                <td>Card Slot</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>Internal</td>
+                <td>128GB 8GB RAM</td>
+              </tr>
+              <tr>
+                <th rowspan="3">MAIN CAMERA</th>
+                <td>Triple</td>
+                <td>50MP</td>
+              </tr>
+              <tr>
+                <td>Features</td>
+                <td>LED Flash</td>
+              </tr>
+              <tr>
+                <td>Video</td>
+                <td>8K @30fps</td>
+              </tr>
+              <tr>
+                <th rowspan="2">SELFIE CAMERA</th>
+                <td>Single</td>
+                <td>10 MP</td>
+              </tr>
+              <tr>
+                <td>Video</td>
+                <td>4K @30fps</td>
+              </tr>
+              <tr>
+                <th rowspan="2">SOUND</th>
+                <td>Loudspeaker</td>
+                <td>Yes, Stereo</td>
+              </tr>
+              <tr>
+                <td>3.5mm jack</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <th rowspan="6">COMMS</th>
+                <td>WLAN</td>
+                <td>Wifi</td>
+              </tr>
+              <tr>
+                <td>Bluetooth</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Positioning</td>
+                <td>GPS</td>
+              </tr>
+              <tr>
+                <td>NFC</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Radio</td>
+                <td>Unspecified</td>
+              </tr>
+              <tr>
+                <td>USB</td>
+                <td>USB Type C</td>
+              </tr>
+              <tr>
+                <th rowspan="1">FEATURES</th>
+                <td>Sensors</td>
+                <td>Fingerprint</td>
+              </tr>
+              <tr>
+                <th rowspan="2">BATTERY</th>
+                <td>Type</td>
+                <td>5000 mAh</td>
+              </tr>
+              <tr>
+                <td>Charging</td>
+                <td>25W wired</td>
+              </tr>
+              <tr>
+                <th rowspan="5">MISC</th>
+                <td>Colors</td>
+                <td>Black, White</td>
+              </tr>
+              <tr>
+                <td>Models</td>
+                <td>SM-XXXX</td>
+              </tr>
+              <tr>
+                <td>SAR</td>
+                <td>0.94 W/kg</td>
+              </tr>
+              <tr>
+                <td>SAR EU</td>
+                <td>0.86 W/kg</td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td>$ 599</td>
+              </tr>
+              <tr>
+                <th rowspan="4">TESTS</th>
+                <td>Performance</td>
+                <td>Antutu = 123123123</td>
+              </tr>
+              <tr>
+                <td>Display</td>
+                <td>1400 nits</td>
+              </tr>
+              <tr>
+                <td>Loudspeaker</td>
+                <td>-24.6 LUFS</td>
+              </tr>
+              <tr>
+                <td>Battery (new)</td>
+                <td>11:48h</td>
+              </tr>
+            </table>
+            <p class="text-light">Deskripsi singkat HPnya mungkin</p> <!-- kalo ada deskripsi dari API -->
       
             <!-- Favorite Button -->
             <button class="btn btn-danger">
@@ -33,11 +202,9 @@
             </div>
           </div>
       
-          <!-- Right Side: User Reviews and Add Review -->
-          <div class="col-md-8">
-            <h3>User Reviews</h3>
-            
-            <!-- Existing User Reviews -->
+          <!-- User Reviews -->
+          <div class="col-md-6">
+            <h3>User Reviews</h3>            
             <div class="mb-4">
               <div class="d-flex justify-content-between">
                 <span><strong>John Doe</strong></span>
@@ -56,28 +223,29 @@
                 </span> 
               </div>
             </div>
-      
-            <!-- Add Your Own Review -->
-            <h4>Write Your Own Review</h4>
-            <form>
-              <div class="mb-3">
-                <label for="reviewText" class="form-label">Your Review</label>
-                <textarea class="form-control" id="reviewText" rows="4"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="reviewRating" class="form-label">Rating</label>
-                <select class="form-select" id="reviewRating">
-                  <option value="5">5 Stars</option>
-                  <option value="4">4 Stars</option>
-                  <option value="3">3 Stars</option>
-                  <option value="2">2 Stars</option>
-                  <option value="1">1 Star</option>
-                </select>
-              </div>
-              <input type="submit" class="btn btn-primary" value="Submit Review"></input>
-            </form>
           </div>
         </div>
+        <!-- Add Your Own Review -->
+         <div class="row mt-5">
+        <h4>Write Your Own Review</h4>
+        <form>
+          <div class="mb-3">
+            <label for="reviewText" class="form-label">Your Review</label>
+            <textarea class="form-control" id="reviewText" rows="4"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="reviewRating" class="form-label">Rating</label>
+            <select class="form-select w-25" id="reviewRating">
+              <option value="5">5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="2">2 Stars</option>
+              <option value="1">1 Star</option>
+            </select>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Submit Review"></input>
+        </form>
+      </div>
       </div>
       
       
