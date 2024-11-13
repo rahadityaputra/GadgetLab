@@ -10,14 +10,15 @@ Sebuah aplikasi berbasis web yang menyediakan layanan review gadget khususnya ha
    git clone https://github.com/rahadityaputra/GadgetLab.git
 
 
-#login
-1. email dan password
+<!-- list tugas -->
+<!-- membuat error handling login dan sigup -->
+<!-- A. Sigup -->
+   <!-- 1. ketika password dan password confirmation tidak sama -->
+   <!-- 2. ketika username sudah dipakai orang lain -->
+   <!-- 3. ketika email sudah dipakai orang lain -->
+<!-- B. Login -->
+   <!--  1. ketika email dan passord salah atau tidak ada di database-->
 
-#signin
-2. username, email , password, password, confirmation
 
-#ketika sudah login , home harus ada menu tambahkan yaitu daftar favorit.
-
-
-#menu favorit 
-1. terdapat 
+<!-- C. Halaman detail phone -->
+   <!-- 1. membuat cache agar tidak many to request ketika di refress -->

@@ -32,6 +32,7 @@ export const createAccount = async (req, res) => {
     if (result.success) {
       res.redirect('/');
     } else {
+      
       res.redirect('/signup');
     }
   } catch (error) {

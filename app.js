@@ -1,16 +1,21 @@
 import express from 'express';
+import session from 'express-session';
 import {route} from './src/route/routes.js';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv/config';
-import { test } from './src/configuration/databasev2.js';
 
-test();
+
 
 const app = express();
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended : true
 }))
-app.use(bodyParser.json());
+app.use(session({
+    name : 'session',
+    secret : 'rahadityaabimanyuputra',
+    
+}))
 app.use(express.static('public'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
