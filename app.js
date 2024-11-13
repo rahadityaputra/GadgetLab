@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import flash from 'connect-flash';
 import {route} from './src/route/routes.js';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv/config';
@@ -19,6 +20,7 @@ app.use(session({
 app.use(express.static('public'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
+app.use(flash());
 app.use(route);
 
 app.listen(process.env.PORT, ()=> {

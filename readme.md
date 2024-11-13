@@ -13,9 +13,9 @@ Sebuah aplikasi berbasis web yang menyediakan layanan review gadget khususnya ha
 <!-- list tugas -->
 <!-- membuat error handling login dan sigup -->
 <!-- A. Sigup -->
-   <!-- 1. ketika password dan password confirmation tidak sama -->
-   <!-- 2. ketika username sudah dipakai orang lain -->
-   <!-- 3. ketika email sudah dipakai orang lain -->
+   <!-- 1. ketika password dan password confirmation tidak sama ####-->
+   <!-- 2. ketika username sudah dipakai orang lain ##### -->
+   <!-- 3. ketika email sudah dipakai orang lain ##### -->
 <!-- B. Login -->
    <!--  1. ketika email dan passord salah atau tidak ada di database-->
 

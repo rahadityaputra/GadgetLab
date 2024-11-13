@@ -2,11 +2,11 @@ import { authenticationLogin, authenticationSignUp} from "../utils/userValidatio
 import { getDeviceDetail, getDeviceList } from "../services/services.js";
 
 export const renderLoginPage = (req, res) => {
-  res.render("login");
+  res.render("login", {message : req.flash('error')});
 };
 
 export const renderSignupPage = (req, res) => {
-  res.render("signup");
+  res.render("signup", {message : req.flash('error')});
 };
 
 export const login = async (req, res) => {
@@ -17,6 +17,7 @@ export const login = async (req, res) => {
     if (result.success) {
       res.redirect('/');
     } else {
+      req.flash('error', result.message);
       res.redirect('/login');
     }
   } catch (error) {
@@ -33,6 +34,7 @@ export const createAccount = async (req, res) => {
       res.redirect('/');
     } else {
       
+      req.flash('error', result.message);
       res.redirect('/signup');
     }
   } catch (error) {

@@ -70,6 +70,16 @@
           <input type="checkbox" class="form-check-input" id="showPassword">
           <label class="form-check-label mb-2" for="showPassword">Show Password</label>
         </div>
+
+            <!-- tampat untuk memberi pesan error apapun itu -->
+            <% if (message.length != 0) { %>
+              <!-- terserah didesain gmn -->
+              <div class="alert alert-danger" role="alert"> 
+                  <%= message %>  
+              </div>
+             <% } %>
+    
+
         <input type="submit" class="btn btn-light w-100 rounded-pill" value="Register"></input>
       </form>
       <br>
