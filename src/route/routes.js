@@ -1,5 +1,5 @@
 import express from 'express';
-import { renderReviewPage, renderPhonesPage, renderComparePage,renderHomeLogin, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount } from '../controller/userController.js';
+import { renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails} from '../controller/userController.js';
 
 export const route = express.Router();
 
@@ -9,7 +9,7 @@ route.post('/signup', createAccount);
 route.post('/login', login);
 route.get('/compare', renderComparePage);
 route.get('/phones', renderPhonesPage);
-route.get('/review', renderReviewPage);
+route.get('/phone/:id', renderPhoneDetails);
 route.use('/', renderHomePage);
 
 

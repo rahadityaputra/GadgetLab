@@ -12,7 +12,7 @@
             <% } %>
             
             <div class="col-12 col-md-4">
-              <a href="/phone/<%= phone.name %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
+              <a href="/phone/<%= phone.id %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
                 <img src="<%= phone.img %>" class="card-img-top img-fluid pt-5" alt="<%= phone.name %>" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
                 <div class="card-body" style="flex-grow: 1;">
                   <h5 class="card-title"><%= phone.name %></h5>
@@ -58,7 +58,7 @@
 <div class="row mt-5">
   <div class="col-md-12">
     <h3 class="text-center mb-3">Top 10 by Fans</h3>
-    <div id="phoneCarousel" class="carousel slide mb-5" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
+    <div id="phoneCarousel2" class="carousel slide mb-5" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
 
       <div class="carousel-inner">
         <% topPhonesByFansList.forEach((phone, index) => { %>
@@ -68,7 +68,7 @@
           <% } %>
           
           <div class="col-12 col-md-4">
-            <a href="/phone/<%= phone.name %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
+            <a href="/phone/<%= phone.id %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
               <img src="<%= phone.img %>" class="card-img-top img-fluid pt-5" alt="<%= phone.name %>" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
               <div class="card-body" style="flex-grow: 1;">
                 <h5 class="card-title"><%= phone.name %></h5>
@@ -87,7 +87,7 @@
         <% for (let i = 0; i < totalSlides2; i++) { %>
           <button
             type="button"
-            data-bs-target="#phoneCarousel"
+            data-bs-target="#phoneCarousel2"
             data-bs-slide-to="<%= i %>"
             class="<%= i === 0 ? 'active' : '' %>"
             aria-current="<%= i === 0 ? 'true' : 'false' %>"
@@ -97,11 +97,11 @@
         <% } %>
       </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarousel" data-bs-slide="prev" style="left: -100px; z-index: 10;">
+      <button class="carousel-control-prev" type="button" data-bs-target="#phoneCarousel2" data-bs-slide="prev" style="left: -100px; z-index: 10;">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#phoneCarousel" data-bs-slide="next" style="right: -100px; z-index: 10;">
+      <button class="carousel-control-next" type="button" data-bs-target="#phoneCarousel2" data-bs-slide="next" style="right: -100px; z-index: 10;">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
