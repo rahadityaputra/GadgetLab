@@ -4,6 +4,7 @@ const maxWidth = 500; // Desired max width in pixels
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 // Attach renderer to #3dphone container and set dynamic size
 const container = document.getElementById('3dphone');
@@ -37,6 +38,7 @@ loader.load(
     function animate() {
       requestAnimationFrame(animate);
       model.rotation.y += 0.01;
+      controls.update();
       renderer.render(scene, camera);
     }
     animate();
