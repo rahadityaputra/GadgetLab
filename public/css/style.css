@@ -23,17 +23,39 @@ body {
   padding-bottom: 5px;
 }
 
-#3dphone {
-  max-width: 100%; /* Keeps within column boundaries */
-  max-height: 100%; /* Enforce aspect ratio height */
-  overflow: hidden; /* Prevents overflow outside container */
+#phone3d {
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  aspect-ratio: 1; /* Maintain a square aspect ratio */
+  cursor: grab;
+}
+
+#phone3d:active {
+  cursor: grabbing;
 }
 
 .carousel-item {
   width: 24rem;
   height: auto;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #151517;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d0d0d0;
 }

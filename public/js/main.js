@@ -1,15 +1,27 @@
-const maxWidth = 500; // Desired max width in pixels
+const maxWidth = 500; // pixels
 
-// Set up Scene, Camera, Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.5;
 
-// Attach renderer to #3dphone container and set dynamic size
-const container = document.getElementById('3dphone');
-container.style.width = `${maxWidth}px`; // Set the container max width
-container.style.height = `${maxWidth}px`; // Ensures initial square aspect
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.enableZoom = false;
+
+new THREE.TextureLoader().load('/3d/textures/environment.png', (texture) => {
+  texture.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = texture; 
+  scene.background = null;
+});
+
+// Attach renderer to container
+const container = document.getElementById('phone3d');
+container.style.width = `${maxWidth}px`;
+container.style.height = `${maxWidth}px`;
 container.appendChild(renderer.domElement);
 
 function resizeRenderer() {
@@ -20,7 +32,6 @@ function resizeRenderer() {
   camera.updateProjectionMatrix();
 }
 
-// Initial render size
 resizeRenderer();
 
 // Load and position the 3D model
@@ -29,15 +40,15 @@ loader.load(
   '/3d/scene.gltf',
   (gltf) => {
     const model = gltf.scene;
-    model.position.set(0, 0, 0);
-    model.scale.set(60, 60, 60);
+    model.scale.set(72, 72, 72);
     scene.add(model);
 
     model.rotation.y = Math.PI / 8;
 
     function animate() {
       requestAnimationFrame(animate);
-      model.rotation.y += 0.01;
+      updateLightPosition();
+      model.rotation.y += 0.005; 
       controls.update();
       renderer.render(scene, camera);
     }
@@ -49,15 +60,18 @@ loader.load(
   }
 );
 
-// Brighter Lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 10);
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
-directionalLight.position.set(1, 1, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 10, 5);
 scene.add(directionalLight);
+function updateLightPosition() {
+  directionalLight.position.copy(camera.position);
+  directionalLight.target.position.copy(camera.position).add(camera.getWorldDirection(new THREE.Vector3())); 
+  directionalLight.target.updateMatrixWorld();
+}
 
-// Camera position
 camera.position.set(0, 1, 12);
 
-// Responsive resizing
 window.addEventListener('resize', resizeRenderer);
