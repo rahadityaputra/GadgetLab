@@ -16,7 +16,7 @@ export const Favorite = sequelize.define(
             allowNull : false,
         },
         id_phone : {
-            type : DataTypes.INTEGER,
+            type : DataTypes.STRING,
             allowNull : false,
         }
     },
@@ -25,5 +25,3 @@ export const Favorite = sequelize.define(
     }
 )
 
-
-Favorite.sync();

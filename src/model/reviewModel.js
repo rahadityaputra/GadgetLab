@@ -16,10 +16,16 @@ export const Review = sequelize.define(
         review_date : {
             type : DataTypes.DATEONLY,
             allowNull : false,
+            defaultValue :  DataTypes.NOW
         },
 
-        id_phone : {
-            type : DataTypes.INTEGER,
+        review_text : {
+            type : DataTypes.TEXT,
+            allowNull : false
+        },
+
+        id_device : {
+            type : DataTypes.STRING,
             allowNull : false,
         },
 
@@ -40,6 +46,3 @@ export const Review = sequelize.define(
         tableName : 'reviews'
     }
 )
-
-
-Review.sync();

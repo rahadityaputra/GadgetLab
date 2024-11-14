@@ -4,8 +4,12 @@ import flash from 'connect-flash';
 import {route} from './src/route/routes.js';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv/config';
+import { test } from './src/configuration/databasev2.js';
+// import { testAssos } from './src/model/association.js';
 
 
+test();
+// testAssos();
 
 const app = express();
 app.use(bodyParser.json());

@@ -1,5 +1,7 @@
 import { authenticationLogin, authenticationSignUp} from "../utils/userValidation.js";
 import { getDeviceDetail, getDeviceList } from "../services/services.js";
+import { Review } from "../model/reviewModel.js";
+import { User } from "../model/userModel.js";
 
 export const renderLoginPage = (req, res) => {
   res.render("login", {message : req.flash('error')});
@@ -71,17 +73,51 @@ export const renderPhonesPage = (req, res) => {
 };
 
 export const renderPhoneDetails =async (req, res) => {
-  console.log(req.params.id);
-  const phone = await getDeviceDetail(req.params.id);
-  console.log(phone);
-  res.render('phone', {phone});
+  // console.log(req.params.id);
+  const user = req.session.user;
+  try {
+    const phone = await getDeviceDetail(req.params.id);
+    const reviews = await Review.findAll({
+      where: {
+        id_device: 'samsung_galaxy_a55-12824'
+      },
+      include: [{
+        model: User,
+        attributes: ['username']
+      }],
+      attributes: ['review_text', 'rating', 'review_date']
+    })
+    
+    console.log(reviews[0].dataValues.User);
+    res.render('phone', {phone, user, reviews});
+    console.log(phone);    
+  } catch (error) {    
+    console.log(error);
+  }
   
+
 }
-
-
 
 
 export const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
 }
+
+export const addPhoneReview  = async (req, res) => {
+  console.log('masuk fungsi tambah');
+  const {id_user, id_device, review_text, rating} = req.body;
+  console.log(id_user, id_device, review_text, rating);
+  try {
+    const review = await Review.create({id_user, id_device, review_text, rating});
+    res.json({
+      message : 'success',
+      review
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// SELECT reviews.review_text, reviews.rating , users.username , reviews.review_date FROM reviews  JOIN users ON reviews.id_user = users.id_user WHERE reviews.id_device = 'samsung_galaxy_a55-12824';
