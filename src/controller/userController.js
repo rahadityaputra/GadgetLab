@@ -126,16 +126,31 @@ export const addPhoneReview  = async (req, res) => {
 export const renderFavoritesDevice = async (req, res) => {
   const id_user = req.params.id;
   
-
   try {
     const favorites = await Favorite.findAll({
       where: {
         id_user: id_user
-      },
-      attributes: ['review_text', 'rating',]
+      }
     })
+    res.render('favorites', {favorites});
   } catch (error) {
-    
+    console.log(error);
   }
-  res.render('favorites');
+}
+
+
+export const addFavoriteDevice = async (req, res) => {
+  const {id_user, id_device, device_name, device_img} = req.body;
+
+  try {
+    const favorite = await Favorite.create({id_user, id_device, device_name, device_img});
+    res.json({
+      message : 'success',
+      favorite
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+
 }

@@ -44,4 +44,39 @@ reviewForm.addEventListener('submit',async function (event) {
 })
 
 
-const favoriteButton = documen
+const favoriteButton = document.getElementById('favorite');
+const deviceImgInput = document.getElementById('deviceImg');
+const deviceNameInput = document.getElementById('deviceName');
+
+favoriteButton.addEventListener('click', async function () {
+
+
+    if (!idUserInput) {
+        window.location.replace("http://localhost:3000/login");
+        return;
+    }
+
+    const id_user = idUserInput.value; 
+    const id_device = idDeviceInput.value;
+    const device_img = deviceImgInput.value;
+    const device_name = deviceNameInput.value;
+
+    try {
+        const result = await fetch('http://localhost:3000/favorites', {
+             headers: {
+                 "Content-Type": "application/json",
+             },
+             body : JSON.stringify({
+                 id_user,
+                 id_device,
+                 device_name,
+                 device_img
+             }),
+             method : "POST"
+         }).then(res => res.json());
+     
+         console.log(result);
+    } catch (error) {
+        
+    }
+})
