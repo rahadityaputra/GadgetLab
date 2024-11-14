@@ -79,7 +79,7 @@ export const renderPhoneDetails =async (req, res) => {
     const phone = await getDeviceDetail(req.params.id);
     const reviews = await Review.findAll({
       where: {
-        id_device: 'samsung_galaxy_a55-12824'
+        id_device: req.params.id
       },
       include: [{
         model: User,
@@ -88,7 +88,7 @@ export const renderPhoneDetails =async (req, res) => {
       attributes: ['review_text', 'rating', 'review_date']
     })
     
-    console.log(reviews[0].dataValues.User);
+    // console.log(reviews[0].dataValues.User);
     res.render('phone', {phone, user, reviews});
     console.log(phone);    
   } catch (error) {    
