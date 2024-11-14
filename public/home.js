@@ -1,5 +1,7 @@
 const searchInput = document.getElementById('search');
 
+
+
 function debounce(func, wait) {
     let timeout;
   
@@ -30,7 +32,10 @@ function debounce(func, wait) {
 searchInput.addEventListener('input', () => {
     const input = searchInput.value;
     debouncedSearch(input);
+
 })
+
+
 
 const recomendation = document.getElementById('recomendation');
 
@@ -40,15 +45,21 @@ function showRecomendation (results) {
 
   recomendationResults = recomendationResults.map(result => {
     return `
-            <div class="d-flex p-2">
+            <div class="w-100">
+             <a class= "d-flex p-2 w-100" href="/phone/${result.id}">
               <div class="image">
                 <img src="${result.img}" alt="" style="width : 40px">
-
               </div>
               <div class="name fw-bold text-black">${result.name}</div>
+             </a>
             </div>
           `
   }).join('');
 
   recomendation.innerHTML = recomendationResults;
 }
+
+searchInput.addEventListener('focusout', () => {
+  recomendation.innerHTML = "";
+  
+})
