@@ -4,6 +4,7 @@ const ratingInput = document.getElementById('reviewRating');
 const idUserInput = document.getElementById('idUser');
 const idDeviceInput = document.getElementById('idDevice');
 
+
 reviewForm.addEventListener('submit',async function (event) {
     event.preventDefault();
     console.log('hhahahah');
@@ -41,3 +42,6 @@ reviewForm.addEventListener('submit',async function (event) {
     }
 
 })
+
+
+const favoriteButton = documen

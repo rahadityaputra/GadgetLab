@@ -32,7 +32,6 @@ export const Review = sequelize.define(
         id_user :{
             type : DataTypes.INTEGER,
             allowNull : false,
-            unique : true      
         },
 
         rating : {
