@@ -77,3 +77,11 @@ export const renderPhoneDetails =async (req, res) => {
   res.render('phone', {phone});
   
 }
+
+
+
+
+export const logout = (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+}

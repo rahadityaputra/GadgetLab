@@ -1,5 +1,7 @@
 import express from 'express';
-import { renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails} from '../controller/userController.js';
+import { renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout} from '../controller/userController.js';
+import { renderFavoritesDevice } from '../utils/userValidation.js';
+import { searchDevice } from '../services/services.js';
 
 export const route = express.Router();
 
@@ -10,6 +12,9 @@ route.post('/login', login);
 route.get('/compare', renderComparePage);
 route.get('/phones', renderPhonesPage);
 route.get('/phone/:id', renderPhoneDetails);
+route.get('/logout', logout);
+route.get('/search/:name', searchDevice);
+route.get('/favorite/:id', renderFavoritesDevice);
 route.use('/', renderHomePage);
 
 

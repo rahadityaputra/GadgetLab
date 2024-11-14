@@ -1,4 +1,5 @@
 import gsmarena from "gsmarena-api";
+console.log(gsmarena);
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -148,4 +149,23 @@ export const getDeviceDetail = async (id) => {
 
   
 }
+
+
+export const searchDevice = async (req, res) => {
+  const name = req.params.name;
+  console.log(name);
+  try {
+    const device = await gsmarena.search.search(name);
+    res.json({
+      message : 'success', 
+      device
+    })
+  } catch (error) {
+    console.log(error);
+    res.json({
+      message : error.message
+    })
+  }
+}
+
 
