@@ -15,7 +15,16 @@ export const Favorite = sequelize.define(
             type : DataTypes.INTEGER,
             allowNull : false,
         },
-        id_phone : {
+        id_device : {
+            type : DataTypes.STRING,
+            allowNull : false,
+        },
+        device_img : {
+            type : DataTypes.STRING,
+            allowNull : false,
+
+        },
+        device_name : {
             type : DataTypes.STRING,
             allowNull : false,
         }

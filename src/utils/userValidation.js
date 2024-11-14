@@ -89,7 +89,3 @@ export const authenticationLogin = async (email, password) => {
   };
 };
 
-
-export const renderFavoritesDevice = async (req, res) => {
-  res.render('favorites');
-}

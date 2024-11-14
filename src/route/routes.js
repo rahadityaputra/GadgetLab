@@ -1,6 +1,6 @@
 import express from 'express';
-import { renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview} from '../controller/userController.js';
-import { renderFavoritesDevice } from '../utils/userValidation.js';
+import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview} from '../controller/userController.js';
+import {  } from '../utils/userValidation.js';
 import { searchDevice } from '../services/services.js';
 
 export const route = express.Router();

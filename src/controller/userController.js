@@ -2,6 +2,7 @@ import { authenticationLogin, authenticationSignUp} from "../utils/userValidatio
 import { getDeviceDetail, getDeviceList } from "../services/services.js";
 import { Review } from "../model/reviewModel.js";
 import { User } from "../model/userModel.js";
+import { Favorite } from "../model/favoritesModel.js";
 
 export const renderLoginPage = (req, res) => {
   res.render("login", {message : req.flash('error')});
@@ -121,3 +122,20 @@ export const addPhoneReview  = async (req, res) => {
 }
 
 // SELECT reviews.review_text, reviews.rating , users.username , reviews.review_date FROM reviews  JOIN users ON reviews.id_user = users.id_user WHERE reviews.id_device = 'samsung_galaxy_a55-12824';
+
+export const renderFavoritesDevice = async (req, res) => {
+  const id_user = req.params.id;
+  
+
+  try {
+    const favorites = await Favorite.findAll({
+      where: {
+        id_user: id_user
+      },
+      attributes: ['review_text', 'rating',]
+    })
+  } catch (error) {
+    
+  }
+  res.render('favorites');
+}

@@ -7,11 +7,16 @@ const idDeviceInput = document.getElementById('idDevice');
 reviewForm.addEventListener('submit',async function (event) {
     event.preventDefault();
     console.log('hhahahah');
+    if (!idUserInput) {
+        window.location.replace("http://localhost:3000/login");
+        return;
+    }
     
     const reviewText = reviewTextInput.value;
     const rating = ratingInput.value;
     const id_user = idUserInput.value; 
     const id_device = idDeviceInput.value;
+
 
     reviewTextInput.value = "";
     ratingInput.value = "5";
