@@ -59,7 +59,15 @@ function showRecomendation (results) {
   recomendation.innerHTML = recomendationResults;
 }
 
+// searchInput.addEventListener('change', function () {
+  // if (searchInput.value == "") {
+  // }
+// })
+
 searchInput.addEventListener('focusout', () => {
-  recomendation.innerHTML = "";
-  
+  searchInput.value = "";
+  setTimeout(()=>{
+    recomendation.innerHTML = "";
+
+  }, 2000)
 })

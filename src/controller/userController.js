@@ -125,14 +125,14 @@ export const addPhoneReview  = async (req, res) => {
 
 export const renderFavoritesDevice = async (req, res) => {
   const id_user = req.params.id;
-  
+  const user = req.session.user;
   try {
     const favorites = await Favorite.findAll({
       where: {
         id_user: id_user
       }
     })
-    res.render('favorites', {favorites});
+    res.render('favorites', {user, favorites});
   } catch (error) {
     console.log(error);
   }
