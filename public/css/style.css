@@ -36,7 +36,7 @@ body {
   cursor: grabbing;
 }
 
-.carousel-item {
+.carousel-item .card {
   width: 24rem;
   height: auto;
 }
