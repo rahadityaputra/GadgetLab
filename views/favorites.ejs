@@ -5,7 +5,7 @@
 <%- include('includes/header') %>
 <body>
     <%- include('includes/navbar', {user : null}) %>
-    
+
     <div class="container my-5">
         <div class="row justify-content-center">
           <div class="col-md-12 d-flex align-items-center justify-content-center">
@@ -13,85 +13,23 @@
           </div>
           <div class="col-md-12">
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-              <div class="col">
-                <a href="/phone/samsung-a" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Samsung a</h5>
-                    <p class="card-text">$999.99</p>
-                  </div>
-                </a>
-              </div>
-  
-              <div class="col">
-                <a href="/phone/oppo-b" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Oppo b</h5>
-                    <p class="card-text">$799.99</p>
-                  </div>
-                </a>
-              </div>
-  
-              <div class="col">
-                <a href="/phone/vivo-c" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Vivo c</h5>
-                    <p class="card-text">$599.99</p>
-                  </div>
-                </a>
-              </div>
-              
-              <div class="col">
-                <a href="/phone/vivo-d" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Vivo d</h5>
-                    <p class="card-text">$599.99</p>
-                  </div>
-                </a>
-              </div>
-  
-              <div class="col">
-                <a href="/phone/vivo-e" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Vivo e</h5>
-                    <p class="card-text">$699.99</p>
-                  </div>
-                </a>
-              </div>
-  
-              <div class="col">
-                <a href="/phone/vivo-e" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Vivo e</h5>
-                    <p class="card-text">$699.99</p>
-                  </div>
-                </a>
-              </div>
-  
-              <div class="col">
-                <a href="/phone/vivo-e" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Vivo e</h5>
-                    <p class="card-text">$699.99</p>
-                  </div>
-                </a>
-              </div>
-  
-              <div class="col">
-                <a href="/phone/vivo-e" class="card clickable-card rounded-4" style="text-decoration: none;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-4" alt="Phone Image">
-                  <div class="card-body">
-                    <h5 class="card-title">Vivo e</h5>
-                    <p class="card-text">$699.99</p>
-                  </div>
-                </a>
-              </div>
+                <% if(reviews && reviews.length > 0) {%>        
+                    <% favorites.forEach(function ({dataValues}) { %>
+                        <div class="col">
+                        <a href="http://localhost:3000/phone/"<%= datavalue.id_device %>" class="card clickable-card rounded-4" style="text-decoration: none;">
+                            <img src="<%= datavalue.device_img %>" class="card-img-top rounded-4" alt="Phone Image">
+                            <div class="card-body">
+                            <h5 class="card-title">"<%= datavalue.device_name %></h5>
+                            </div>
+                        </a>
+                        </div>
+                    <% }) %>
+                <% } else {%>       
+
+                    <!-- error handling jika tidak ada favorit device -->
+
+
+                <% }%>       
             </div>
           </div>
           <div class="col-md-12 text-center mt-5">
