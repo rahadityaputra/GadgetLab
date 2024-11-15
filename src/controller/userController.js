@@ -154,3 +154,49 @@ export const addFavoriteDevice = async (req, res) => {
   }
 
 }
+
+
+export const deleteFavoriteDevice = async (res, req) => {
+  const {id_user, id_device} = req.body;
+
+  try {
+    const device = await Favorite.destroy({
+      where : {
+        id_user,
+        id_device
+      }
+    })
+    res.json({
+      message : 'success',
+      device
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const updatePasswordAccount = async (req, res) => {
+  const {id_user, password, newPassword} = req.body;
+
+  try {
+    const user = await User.findByPk(id_user);
+    const userUpdated = await User.update(
+      {password : newPassword},
+      {
+        where : {
+          id_user
+        }
+      }
+    )
+
+    res.json({
+      message : 'success',
+      userUpdated
+    })
+
+    res.redirect('/');
+  } catch (error) {
+    console.log(error);
+  }
+}

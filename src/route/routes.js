@@ -1,5 +1,5 @@
 import express from 'express';
-import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice} from '../controller/userController.js';
+import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice, updatePasswordAccount} from '../controller/userController.js';
 import {  } from '../utils/userValidation.js';
 import { searchDevice } from '../services/services.js';
 
@@ -18,6 +18,8 @@ route.get('/logout', logout);
 route.get('/search/:name', searchDevice);
 route.get('/favorite/:id', renderFavoritesDevice);
 route.use('/', renderHomePage);
+route.delete('/favorites', )
+route.put('/password', updatePasswordAccount);
 
 
 
