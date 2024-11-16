@@ -11,18 +11,11 @@ async function deleteFavoriteDevice() {
     const id_user = this.dataset.idUser;
     
     try {
-        const result = await fetch('http://localhost:3000/favorites', {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body : JSON.stringify({
-                id_user,
-                id_device,
-            }),
+        const result = await fetch(`http://localhost:3000/favorites/delete/${id_device}`, {
             method : "DELETE"
-        })    
-        
-        window.location.replace("http://localhost:3000/favorites");
+        })
+        console.log(await result.json());
+        window.location.replace(`http://localhost:3000/favorites`);
     } catch (error) {
         console.log(error);
     }

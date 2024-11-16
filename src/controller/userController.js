@@ -124,12 +124,16 @@ export const addPhoneReview  = async (req, res) => {
 // SELECT reviews.review_text, reviews.rating , users.username , reviews.review_date FROM reviews  JOIN users ON reviews.id_user = users.id_user WHERE reviews.id_device = 'samsung_galaxy_a55-12824';
 
 export const renderFavoritesDevice = async (req, res) => {
-  const id_user = req.params.id;
   const user = req.session.user;
+
+  if(!user){
+    res.redirect('/');
+    return;
+  }
   try {
     const favorites = await Favorite.findAll({
       where: {
-        id_user: id_user
+        id_user: user.id
       }
     })
     res.render('favorites', {user, favorites});
@@ -156,21 +160,24 @@ export const addFavoriteDevice = async (req, res) => {
 }
 
 
-export const deleteFavoriteDevice = async (res, req) => {
-  const {id_user, id_device} = req.body;
+export const deleteFavoriteDevice = async (req, res) => {
+  // const {id_user, id_device} = req.body;
+  const user = req.session.user;
+  const id_device = req.params.id;
+  console.log('p');
 
+  console.log(user.id, id_device);
   try {
-    const device = await Favorite.destroy({
-      where : {
-        id_user,
-        id_device
-      }
-    })
-    res.json({
-      message : 'success',
-      device
-    })
-    
+      const device = await Favorite.destroy({
+          where : {
+              id_user : user.id,
+              id_device
+            }
+          })
+        res.json({
+          message : 'success',
+          device
+        })      
   } catch (error) {
     console.log(error);
   }
