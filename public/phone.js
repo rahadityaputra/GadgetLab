@@ -34,9 +34,10 @@ reviewForm.addEventListener('submit',async function (event) {
                  rating : rating
              }),
              method : "POST"
-         }).then(res => res.json());
-     
-         console.log(result);
+         });
+         
+        window.location.replace(`http://localhost:3000/phone`);
+
     } catch (error) {
         
     }
