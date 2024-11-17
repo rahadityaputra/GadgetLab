@@ -121,8 +121,6 @@ export const addPhoneReview  = async (req, res) => {
   }
 }
 
-// SELECT reviews.review_text, reviews.rating , users.username , reviews.review_date FROM reviews  JOIN users ON reviews.id_user = users.id_user WHERE reviews.id_device = 'samsung_galaxy_a55-12824';
-
 export const renderFavoritesDevice = async (req, res) => {
   const user = req.session.user;
 
@@ -142,7 +140,6 @@ export const renderFavoritesDevice = async (req, res) => {
   }
 }
 
-
 export const addFavoriteDevice = async (req, res) => {
   const {id_user, id_device, device_name, device_img} = req.body;
 
@@ -156,12 +153,9 @@ export const addFavoriteDevice = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-
 }
 
-
 export const deleteFavoriteDevice = async (req, res) => {
-  // const {id_user, id_device} = req.body;
   const user = req.session.user;
   const id_device = req.params.id;
   console.log('p');
@@ -184,15 +178,21 @@ export const deleteFavoriteDevice = async (req, res) => {
 }
 
 export const updatePasswordAccount = async (req, res) => {
-  const {id_user, password, newPassword} = req.body;
-
+  const {password, newPassword} = req.body;
+  console.log(password, newPassword);
   try {
-    const user = await User.findByPk(id_user);
+    const user = await User.findOne({
+      where : {
+      id_user : req.session.user.id,
+      password
+      }
+    });
+
     const userUpdated = await User.update(
       {password : newPassword},
       {
         where : {
-          id_user
+           id_user : req.session.user.id,
         }
       }
     )
@@ -202,8 +202,18 @@ export const updatePasswordAccount = async (req, res) => {
       userUpdated
     })
 
-    res.redirect('/');
+    // res.redirect('/');
   } catch (error) {
     console.log(error);
   }
+}
+
+export const renderPasswordPage = (req, res) => {
+  const user = req.session.user;
+  if(!user) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('password', {user});
 }
