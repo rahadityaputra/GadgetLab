@@ -3,62 +3,61 @@
 
 <%- include('includes/header') %>
 
-<body>
-  
+<body class="d-flex flex-column min-vh-100 text-light">
     <%- include('includes/navbar', {user}) %>
 
     <div class="container my-5">
         <div class="row justify-content-center">
-          <div class="col-md-12 d-flex align-items-center justify-content-center">
-            <h1 class="pb-4 text-light">Favorite Phones</h1>
-          </div>
-          <div class="col-md-12">
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-                <% if(favorites && favorites.length > 0) {%>        
-                    <% favorites.forEach(function ({dataValues}) { %>
-                        <div class="col">
-                        <a href="http://localhost:3000/phone/"<%= dataValues.id_device %>" class="card clickable-card rounded-4" style="text-decoration: none;">
-                            <img src="<%= dataValues.device_img %>" class="card-img-top rounded-4" alt="Phone Image">
-                            <div class="card-body">
-                            <h5 class="card-title">"<%= dataValues.device_name %></h5>
-                            </div>
-                        </a>
-                        <button class="delete" data-device-id="<%= dataValues.id_device  %>" data-id-user="<%= user.id  %>">hapus device ini</button>
-                        </div>
-                    <% }) %>
-                <% } else {%>       
-
-                    <!-- error handling jika tidak ada favorit device -->
-
-
-                <% }%>       
+            <div class="col-md-12 d-flex align-items-center justify-content-center">
+                <h1 class="pb-4 text-light">Favorite Phones</h1>
             </div>
-          </div>
-          <div class="col-md-12 text-center mt-5">
-            <nav aria-label="Page navigation">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+            <div class="col-md-12">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                    <% if (favorites && favorites.length > 0) { %>
+                        <% favorites.forEach(function ({dataValues}) { %>
+                            <div class="col">
+                                <a href="http://localhost:3000/phone/<%= dataValues.id_device %>" class="card clickable-card rounded-4 text-center" style="width: 300px; margin: 0 auto; height: 410px; display: flex; flex-direction: column; justify-content: space-between;">
+                                    <img src="<%= dataValues.device_img %>" class="card-img-top img-fluid rounded-4 pt-4" alt="Phone Image" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= dataValues.device_name %></h5>
+                                        <button class="delete btn btn-danger mt-1" data-device-id="<%= dataValues.id_device %>" data-id-user="<%= user.id %>" style="z-index: 10;">Remove from Favorites</button>
+                                    </div>
+                                </a>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="d-flex align-items-center justify-content-center" style="height: 300px; width: 100%;">
+                            <div class="text-light text-center">
+                                <p>You don't have any favorite phones yet.</p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-md-12 text-center mt-5">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-      </div>
+    </div>
 
     <%- include('includes/footer') %>
-    <%- include('includes/script') %>     
+    <%- include('includes/script') %>
     <script src="/favorites.js"></script>
-
 </body>
 </html>

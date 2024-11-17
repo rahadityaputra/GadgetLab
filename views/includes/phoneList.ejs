@@ -1,7 +1,7 @@
  <!-- untuk top 10 daily interest -->
  <div class="row mt-5">
     <div class="col-md-12">
-      <h3 class="text-center mb-3">Top 10 by daily interest</h3>
+      <h3 class="text-center mb-3">Top 10 by Daily Interest</h3>
       <div id="phoneCarouselInterest" class="carousel slide" data-bs-ride="carousel" style="max-width: 900px; margin: 0 auto; position: relative;">
   
         <div class="carousel-inner">
@@ -12,7 +12,7 @@
             <% } %>
             
             <div class="col-12 col-md-4">
-              <a href="/phone/<%= phone.id %>" class="card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
+              <a href="/phone/<%= phone.id %>" class="card clickable-card text-center w-100" style="width: 400px; margin: 0 auto; height: 400px; display: flex; flex-direction: column; justify-content: space-between;">
                 <img src="<%= phone.img %>" class="card-img-top img-fluid pt-5" alt="<%= phone.name %>" style="object-fit: contain; max-height: 300px; flex-shrink: 0;">
                 <div class="card-body" style="flex-grow: 1;">
                   <h5 class="card-title"><%= phone.name %></h5>
