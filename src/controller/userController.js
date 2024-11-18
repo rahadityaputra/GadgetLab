@@ -244,3 +244,9 @@ export const compareDevices = async (req, res) => {
   }
     
   } 
+
+
+
+  export const renderPageAbout = (req, res) => {
+    res.render('about');
+  }

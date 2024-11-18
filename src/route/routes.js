@@ -1,9 +1,10 @@
 import express from 'express';
-import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice, updatePasswordAccount, deleteFavoriteDevice, renderPasswordPage, compareDevices} from '../controller/userController.js';
+import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice, updatePasswordAccount, deleteFavoriteDevice, renderPasswordPage, compareDevices, renderPageAbout} from '../controller/userController.js';
 import { searchDevice } from '../services/services.js';
 
 export const route = express.Router();
 
+route.get('/about'. renderPageAbout);
 route.get('/login', renderLoginPage); 
 route.get('/signup', renderSignupPage);
 route.get('/password', renderPasswordPage);
