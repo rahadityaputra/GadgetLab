@@ -66,7 +66,8 @@ export const renderHomePage = async (req, res) => {
 
 
 export const renderComparePage = (req, res) => {
-  res.render("compare");
+  const user = req.session.user;
+  res.render("compare", {user});
 };
 
 export const renderPhonesPage = (req, res) => {
@@ -244,7 +245,6 @@ export const compareDevices = async (req, res) => {
   }
     
   } 
-
 
 
   export const renderPageAbout = (req, res) => {
