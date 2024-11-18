@@ -1,6 +1,5 @@
 import express from 'express';
-import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice, updatePasswordAccount, deleteFavoriteDevice, renderPasswordPage} from '../controller/userController.js';
-import {  } from '../utils/userValidation.js';
+import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice, updatePasswordAccount, deleteFavoriteDevice, renderPasswordPage, compareDevices} from '../controller/userController.js';
 import { searchDevice } from '../services/services.js';
 
 export const route = express.Router();
@@ -8,6 +7,7 @@ export const route = express.Router();
 route.get('/login', renderLoginPage); 
 route.get('/signup', renderSignupPage);
 route.get('/password', renderPasswordPage);
+route.get('/compare/:id_phone1/:id_phone2', compareDevices);
 route.put('/password', updatePasswordAccount);
 route.post('/signup', createAccount);
 route.delete('/favorites/delete/:id', deleteFavoriteDevice);

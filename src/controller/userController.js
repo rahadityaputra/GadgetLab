@@ -217,3 +217,30 @@ export const renderPasswordPage = (req, res) => {
 
   res.render('password', {user});
 }
+
+export const compareDevices = async (req, res) => {
+  const id_phone1 = req.params.id_phone1;
+  const id_phone2 = req.params.id_phone2;
+
+  
+  console.log(id_phone1, id_phone2);
+  try {
+    const phone1 = await getDeviceDetail(id_phone1);
+    const phone2 = await getDeviceDetail(id_phone2);
+  
+    res.json({
+      message : "success",
+      data : {
+        phone1,
+        phone2
+      }
+    })
+    
+  } catch (error) {
+    res.json({
+      message : error.message,
+    })
+    
+  }
+    
+  } 
