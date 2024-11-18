@@ -4,7 +4,7 @@ import { searchDevice } from '../services/services.js';
 
 export const route = express.Router();
 
-route.get('/about'. renderPageAbout);
+route.get('/about', renderPageAbout);
 route.get('/login', renderLoginPage); 
 route.get('/signup', renderSignupPage);
 route.get('/password', renderPasswordPage);
