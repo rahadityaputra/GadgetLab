@@ -37,8 +37,10 @@ export const User = sequelize.define(
 User.sync().then(() => {
   Review.sync().then(() => {
     Favorite.sync();
+    
   });
 });
+
 
 User.hasMany(Review, {
   foreignKey: "id_user",
