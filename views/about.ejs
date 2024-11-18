@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('includes/header') %>
+
+<body class="d-flex flex-column min-vh-100 text-light">
+  <%- include('includes/navbar', {user, current : "about"}) %>
+  
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12 d-flex align-items-center justify-content-center p-5">
+        <div class="text-center">
+          <h2>About GadgetLab</h2>
+          <p>
+            Welcome to GadgetLab! Here, you can review phones, compare their features, and check detailed specs of any model. Whether you’re a tech fan or just looking for the right phone, GadgetLab makes it easy to decide.
+          </p>
+          <h3>Contact Us!</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <%- include('includes/footer') %>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="/js/main.js"></script>
+  
+  <%- include('includes/script') %>
+</body>
+</html>
