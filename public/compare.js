@@ -56,20 +56,15 @@ function showRecomendation2(results, recomendationBox) {
   recomendationResults = recomendationResults
     .map((result) => {
       return `
-            <div class="w-100">
              <div class=" d-flex p-2 w-100 bg-white cursor-pointer" >
-              <div class="image">
+              <div class="image w-25">
                 <img src="${result.img}" alt="" style="width : 40px" class="${phone}" data-img="${result.img}" data-id="${result.id}"  data-name="${result.name}">
               </div>
-              <div class="name fw-bold text-black">${result.name}</div>
+              <div class="name fw-bold text-black ms-5 text-center">${result.name}</div>
              </div>
-            </div>
-          `;
+            `;
     })
     .join("");
-
-    // console.log(recomendationResults);
-
   recomendationBox.innerHTML = recomendationResults;
 }
 
@@ -93,7 +88,7 @@ document.body.addEventListener('click', function (event) {
         console.log('masuk brader');
         document.querySelector('.choose-phone-1').innerHTML = 
         `
-        <div class="w-100">
+        <div class="w-100 d-flex justify-content-center">
         <div class="image">
         <img src="${element.dataset.img}" alt="" style="width : 40px">
         </div>
