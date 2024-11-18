@@ -46,11 +46,11 @@ function showRecomendation (results) {
   recomendationResults = recomendationResults.map(result => {
     return `
             <div class="w-100">
-             <a class= "d-flex p-2 w-100" href="/phone/${result.id}">
+             <a class= "d-flex p-2 w-100 gap-2" href="/phone/${result.id}">
               <div class="image">
                 <img src="${result.img}" alt="" style="width : 40px">
               </div>
-              <div class="name fw-bold text-black">${result.name}</div>
+              <div class="name fw-bold text-black mt-3">${result.name}</div>
              </a>
             </div>
           `
