@@ -6,7 +6,6 @@ deleteButtons.forEach(button => {
 
 
 async function deleteFavoriteDevice() {
-    console.log('p bang');
     const id_device = this.dataset.deviceId;
     const id_user = this.dataset.idUser;
     

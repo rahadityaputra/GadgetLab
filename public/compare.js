@@ -58,9 +58,9 @@ function showRecomendation2(results, recomendationBox) {
       return `
              <div class=" d-flex p-2 w-100 bg-white cursor-pointer" >
               <div class="image w-25">
-                <img src="${result.img}" alt="" style="width : 40px" class="${phone}" data-img="${result.img}" data-id="${result.id}"  data-name="${result.name}">
+                <img src="${result.img}" alt="" style="width : 60px" class="${phone}" data-img="${result.img}" data-id="${result.id}"  data-name="${result.name}">
               </div>
-              <div class="name fw-bold text-black ms-5 text-center">${result.name}</div>
+              <div class="name fw-bold text-black ms-5 text-center mt-2"> ${result.name}</div>
              </div>
             `;
     })
@@ -90,9 +90,10 @@ document.body.addEventListener('click', function (event) {
         `
         <div class="w-100 d-flex justify-content-center">
         <div class="image">
-        <img src="${element.dataset.img}" alt="" style="width : 40px">
+        <img src="${element.dataset.img}" alt="" style="width : 100px">
         </div>
-        <div class="name fw-bold text-white">${element.dataset.name}</div>
+        <div class="name fw-bold text-white mt-5 ms-2"> ${element.dataset.name}</div>
+        </div>
         </div>
         `;
         
@@ -101,11 +102,12 @@ document.body.addEventListener('click', function (event) {
         console.log('masuk brader');
         document.querySelector('.choose-phone-2').innerHTML = 
         `
-        <div class="w-100">
+        <div class="w-100 d-flex justify-content-center"">
         <div class="image">
-        <img src="${element.dataset.img}" alt="" style="width : 40px">
+        <img src="${element.dataset.img}" alt="" style="width : 100px;">
         </div>
-        <div class="name fw-bold text-white">${element.dataset.name}</div>
+        <div class="name fw-bold text-white mt-5 ms-2"> ${element.dataset.name}</div>
+        </div>
         </div>
         ` ;
     
@@ -138,6 +140,7 @@ function renderDetailDevices(data, compareContainer) {
     phoneImage.alt = phone.name;
     phoneImage.style.width = "150px";
     phoneImage.style.height = "auto";
+    phoneImage.style.marginBottom = "15px";
     phoneContainer.appendChild(phoneImage);
 
     const phoneName = document.createElement("h3");

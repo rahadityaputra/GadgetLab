@@ -7,7 +7,6 @@ const idDeviceInput = document.getElementById('idDevice');
 
 reviewForm.addEventListener('submit',async function (event) {
     event.preventDefault();
-    console.log('hhahahah');
     if (!idUserInput) {
         window.location.replace("http://localhost:3000/login");
         return;
@@ -76,7 +75,6 @@ favoriteButton.addEventListener('click', async function () {
              method : "POST"
          }).then(res => res.json());
      
-         console.log(result);
     } catch (error) {
         
     }
