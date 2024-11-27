@@ -1,5 +1,4 @@
 # supaya folder node_modules tidak ke tracking sama github 
 node_modules/
 *.env
-device.json
-topDevices.json
+src/services/cache/
