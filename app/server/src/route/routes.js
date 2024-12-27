@@ -1,4 +1,6 @@
 import express from 'express';
+import request from 'supertest';
+
 import { renderFavoritesDevice, renderPhonesPage, renderComparePage, login, renderLoginPage, renderHomePage, renderSignupPage, createAccount , renderPhoneDetails, logout, addPhoneReview, addFavoriteDevice, updatePasswordAccount, deleteFavoriteDevice, renderPasswordPage, compareDevices, renderPageAbout} from '../controller/userController.js';
 import { searchDevice } from '../services/services.js';
 
@@ -22,7 +24,6 @@ route.get('/logout', logout);
 route.get('/search/:name', searchDevice);
 route.get('/favorites', renderFavoritesDevice);
 route.use('/', renderHomePage);
-
 
 
 
